@@ -42,22 +42,42 @@ public class AppTest
         assertTrue( true );
     }
 	public void testFound() {
-      ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
-      assertTrue(new App().search(array, 4));
+      ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+      ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(2, 3, 4, 5));
+      ArrayList<Integer> array3 = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+      assertTrue(new App().search(array1, array2, array3, 7));
     }
 
     public void testNotFound() {
-      ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
-      assertFalse(new App().search(array, 5));
+      ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+      ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(2, 3, 4, 5));
+      ArrayList<Integer> array3 = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+      assertFalse(new App().search(array1, array2, array3, 2));
     }
 
-    public void testEmptyArray() {
-      ArrayList<Integer> array = new ArrayList<>();
-      assertFalse(new App().search(array, 1));
+    public void testFoundUnequalSizedArrays() {
+      ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 3 ));
+      ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(2, 3, 4, 5));
+      ArrayList<Integer> array3 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 6));
+      assertTrue(new App().search(array1, array2, array3, 6));
     }
 
-    public void testNull() {
-      assertFalse(new App().search(null, 1));
+	public void testNotFoundUnequalSizedArrays() {
+      ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 3 ));
+      ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(2, 3, 4, 5));
+      ArrayList<Integer> array3 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 6));
+      assertFalse(new App().search(array1, array2, array3, 3));
+    }
+
+    public void testEmptyArrays() {
+      ArrayList<Integer> array1 = new ArrayList<>();
+      ArrayList<Integer> array2 = new ArrayList<>();
+      ArrayList<Integer> array3 = new ArrayList<>();
+      assertFalse(new App().search(array1, array2, array3, 1));
+    }
+
+    public void testNullArrays() {
+      assertFalse(new App().search(null,null,null, 1));
     }
 
 }

@@ -55,17 +55,45 @@ public class AppTest
       assertFalse(new App().search(array1, array2, array3, 2));
     }
 
-    public void testFoundUnequalSizedArrays() {
-      ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 3 ));
-      ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(2, 3, 4, 5));
-      ArrayList<Integer> array3 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 6));
+    public void testFoundUnequalSizedArraysMax1() {
+	  ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 6));
+	  ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(2, 3, 4, 5));
+      ArrayList<Integer> array3 = new ArrayList<>(Arrays.asList(1, 2, 3 ));
       assertTrue(new App().search(array1, array2, array3, 6));
     }
 
-	public void testNotFoundUnequalSizedArrays() {
+	public void testFoundUnequalSizedArraysMax2() {
+      ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 3 ));
+	  ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 6));
+      ArrayList<Integer> array3 = new ArrayList<>(Arrays.asList(2, 3, 4, 5));
+      assertTrue(new App().search(array1, array2, array3, 6));
+    }
+
+	public void testFoundUnequalSizedArraysMax3() {
       ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 3 ));
       ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(2, 3, 4, 5));
-      ArrayList<Integer> array3 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 6));
+	  ArrayList<Integer> array3 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 6));
+      assertTrue(new App().search(array1, array2, array3, 6));
+    }
+
+	public void testNotFoundUnequalSizedArraysMax1() {
+	  ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 6));
+	  ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(2, 3, 4, 5));
+      ArrayList<Integer> array3 = new ArrayList<>(Arrays.asList(1, 2, 3 ));
+      assertFalse(new App().search(array1, array2, array3, 3));
+    }
+
+	public void testNotFoundUnequalSizedArraysMax2() {
+      ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 3 ));
+	  ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 6));
+      ArrayList<Integer> array3 = new ArrayList<>(Arrays.asList(2, 3, 4, 5));
+      assertFalse(new App().search(array1, array2, array3, 3));
+    }
+
+	public void testNotFoundUnequalSizedArraysMax3() {
+      ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(1, 2, 3 ));
+      ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(2, 3, 4, 5));
+	  ArrayList<Integer> array3 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 6));
       assertFalse(new App().search(array1, array2, array3, 3));
     }
 
@@ -76,8 +104,22 @@ public class AppTest
       assertFalse(new App().search(array1, array2, array3, 1));
     }
 
-    public void testNullArrays() {
-      assertFalse(new App().search(null,null,null, 1));
+    public void testNullArray1() {
+      ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(2, 3, 4, 5));
+      ArrayList<Integer> array3 = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+      assertFalse(new App().search(null,array2,array3, 1));
+    }
+
+    public void testNullArray2() {
+      ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(2, 3, 4, 5));
+      ArrayList<Integer> array3 = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+      assertFalse(new App().search(array1,null,array3, 1));
+    }
+
+	public void testNullArray3() {
+      ArrayList<Integer> array1 = new ArrayList<>(Arrays.asList(2, 3, 4, 5));
+      ArrayList<Integer> array2 = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+      assertFalse(new App().search(array1,array2,null, 1));
     }
 
 }
